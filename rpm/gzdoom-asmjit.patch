@@ -1,0 +1,61 @@
+From fa87062da444a9abcb338b7afa41179db7236a72 Mon Sep 17 00:00:00 2001
+From: Tommy Nguyen <remyabel@gmail.com>
+Date: Mon, 25 Feb 2019 15:52:40 -0500
+Subject: [PATCH] Install asmjit
+
+---
+ CMakeLists.txt        | 3 +--
+ asmjit/CMakeLists.txt | 5 +----
+ src/CMakeLists.txt    | 2 +-
+ 3 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b75b27b5f..a08266b7d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -299,8 +299,7 @@ if( ${HAVE_VM_JIT} )
+ 		message( STATUS "Using system asmjit, includes found at ${ASMJIT_INCLUDE_DIR}" )
+ 	else()
+ 		message( STATUS "Using internal asmjit" )
+-		set( SKIP_INSTALL_ALL TRUE ) # Avoid installing asmjit alongside zdoom
+-		add_subdirectory( asmjit )
++        add_subdirectory( asmjit )
+ 		set( ASMJIT_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/asmjit )
+ 		set( ASMJIT_LIBRARIES asmjit )
+ 		set( ASMJIT_LIBRARY asmjit )
+diff --git a/asmjit/CMakeLists.txt b/asmjit/CMakeLists.txt
+index ab5c2fb4f..f17bad02c 100644
+--- a/asmjit/CMakeLists.txt
++++ b/asmjit/CMakeLists.txt
+@@ -1,14 +1,11 @@
+ cmake_minimum_required(VERSION 2.8.7)
+ 
+-#make_release_only()
++make_release_only()
+ 
+ project(asmjit C)
+ 
+ set(ASMJITNAME asmjit)
+ 
+-add_definitions(-DASMJIT_BUILD_EMBED)
+-add_definitions(-DASMJIT_STATIC)
+-
+ if(MSVC)
+     set(CMAKE_DEBUG_POSTFIX "d")
+     add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6244225ca..3f32f0a39 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1336,7 +1336,7 @@ if( UNIX )
+ 	endif()
+ endif()
+ 
+-target_link_libraries( zdoom ${ZDOOM_LIBS} gdtoa dumb lzma )
++target_link_libraries( zdoom ${ZDOOM_LIBS} gdtoa dumb lzma asmjit )
+ 
+ include_directories( .
+ 	g_statusbar
+-- 
+2.20.1
+

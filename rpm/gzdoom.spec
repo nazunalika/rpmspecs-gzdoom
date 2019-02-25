@@ -18,6 +18,7 @@ Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-wadsrc-extra.patch
 Patch3:         gzdoom-staticlibs.patch
 Patch5:         gzdoom-lzma.patch
+Patch6:         gzdoom-asmjit.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
