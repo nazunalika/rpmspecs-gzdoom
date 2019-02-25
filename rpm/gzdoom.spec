@@ -98,6 +98,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_docdir}/%{name}/*
 
 %changelog
+* Mon Feb 25 2019 Tommy Nguyen <remyabel@gmail.com> - 3.7.2-2
+- Added patch for libasmjit.so
+
 * Mon Feb 25 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-1
 - Rebased to 3.7.2
 - Removed provides of qzdoom
@@ -107,4 +110,3 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 - Rebuild spec according to Fedora guidelines
 - Removed timidity dependency as timidity is built-in to gzdoom
 - Rebased to 3.6.0
-
