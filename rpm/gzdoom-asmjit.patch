@@ -1,13 +1,13 @@
-From fa87062da444a9abcb338b7afa41179db7236a72 Mon Sep 17 00:00:00 2001
+From f006d85a5edb419950abd646de2b95cceedc43c7 Mon Sep 17 00:00:00 2001
 From: Tommy Nguyen <remyabel@gmail.com>
 Date: Mon, 25 Feb 2019 15:52:40 -0500
 Subject: [PATCH] Install asmjit
 
 ---
  CMakeLists.txt        | 3 +--
- asmjit/CMakeLists.txt | 5 +----
+ asmjit/CMakeLists.txt | 9 +++------
  src/CMakeLists.txt    | 2 +-
- 3 files changed, 3 insertions(+), 7 deletions(-)
+ 3 files changed, 5 insertions(+), 9 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index b75b27b5f..a08266b7d 100644
@@ -24,7 +24,7 @@ index b75b27b5f..a08266b7d 100644
  		set( ASMJIT_LIBRARIES asmjit )
  		set( ASMJIT_LIBRARY asmjit )
 diff --git a/asmjit/CMakeLists.txt b/asmjit/CMakeLists.txt
-index ab5c2fb4f..f17bad02c 100644
+index ab5c2fb4f..560a6b7aa 100644
 --- a/asmjit/CMakeLists.txt
 +++ b/asmjit/CMakeLists.txt
 @@ -1,14 +1,11 @@
@@ -43,6 +43,17 @@ index ab5c2fb4f..f17bad02c 100644
  if(MSVC)
      set(CMAKE_DEBUG_POSTFIX "d")
      add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
+@@ -104,8 +101,8 @@ set_target_properties(${ASMJITNAME} PROPERTIES OUTPUT_NAME asmjit)
+ if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL )
+     install(TARGETS ${ASMJITNAME}
+         RUNTIME DESTINATION bin
+-        ARCHIVE DESTINATION lib
+-        LIBRARY DESTINATION lib )
++        ARCHIVE DESTINATION lib64
++        LIBRARY DESTINATION lib64 )
+ endif()
+ if(NOT SKIP_INSTALL_HEADERS AND NOT SKIP_INSTALL_ALL )
+     install(FILES ${ASMJIT_PUBLIC_HDRS} DESTINATION include)
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index 6244225ca..3f32f0a39 100644
 --- a/src/CMakeLists.txt
