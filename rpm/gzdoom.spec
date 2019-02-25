@@ -1,6 +1,6 @@
 Name:           gzdoom
 Version:        3.7.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPLv3
 Group:          Games/Shooter
@@ -8,7 +8,7 @@ Url:            http://zdoom.org
 Source0:        https://github.com/coelckers/gzdoom/archive/g%{version}.tar.gz
 
 Provides:       zdoom = 2.8.1
-#Provides:       qzdoom = 2.1.0
+Provides:       qzdoom = 1.3.0
 #Provides:       bundled(lzma-sdk) = 17.01
 #Provides:       bundled(dumb) = 0.9.3
 #Provides:       bundled(gdtoa)
@@ -18,6 +18,8 @@ Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-wadsrc-extra.patch
 Patch3:         gzdoom-staticlibs.patch
 Patch5:         gzdoom-lzma.patch
+Patch6:         gzdoom-asmjit.patch
+Patch7:         gzdoom-fl2.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -66,25 +68,24 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
 
 %prep
 %setup -q -n %{name}-g%{version}
-%patch -P 1 -P 2 -P 3 -p1
+%patch -P 1 -P 2 -P 3 -P 6 -P 7 -p1
 
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
         tools/updaterevision/updaterevision.c
 
 %build
-# We must not strip - %%debug_package will take care of it
-# Deactivate -Wl,--as-needed
 %cmake  -DNO_STRIP=1 \
         -DCMAKE_SHARED_LINKER_FLAGS="" \
-        -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_MODULE_LINKER_FLAGS="" \
+        -DCMAKE_EXE_LINKER_FLAGS="" \
+        -DCMAKE_MODULE_LINKER_FLAGS="" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
         -DINSTALL_PK3_PATH="%{_datadir}/doom"
 
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install/fast
+make DESTDIR=%{buildroot} install
 
 %post
 echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
@@ -97,6 +98,14 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_docdir}/%{name}/*
 
 %changelog
+* Mon Feb 25 2019 Tommy Nguyen <remyabel@gmail.com> - 3.7.2-2
+- Added back qzdoom provides
+- Added patch to allow build to work with fluidsynth 2
+  for when Fedora decides to rebase
+
+* Mon Feb 25 2019 Tommy Nguyen <remyabel@gmail.com> - 3.7.2-2
+- Added patch for libasmjit.so
+
 * Mon Feb 25 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-1
 - Rebased to 3.7.2
 - Removed provides of qzdoom
@@ -106,4 +115,3 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 - Rebuild spec according to Fedora guidelines
 - Removed timidity dependency as timidity is built-in to gzdoom
 - Rebased to 3.6.0
-

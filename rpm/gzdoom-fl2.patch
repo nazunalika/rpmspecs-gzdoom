@@ -1,0 +1,17 @@
+--- gzdoom/src/sound/mididevices/music_fluidsynth_mididevice.cpp	2019-02-25 15:40:17.377764751 -0700
++++ gzdoomnew/src/sound/mididevices/music_fluidsynth_mididevice.cpp	2019-02-25 15:49:01.734838899 -0700
+@@ -79,10 +79,13 @@
+ #define FLUID_CHORUS_DEFAULT_LEVEL 2.0f
+ #define FLUID_CHORUS_DEFAULT_SPEED 0.3f
+ #define FLUID_CHORUS_DEFAULT_DEPTH 8.0f
+-#define FLUID_CHORUS_DEFAULT_TYPE FLUID_CHORUS_MOD_SINE
+ 
+ #endif
+ 
++#ifndef FLUID_CHORUS_DEFAULT_TYPE
++#define FLUID_CHORUS_DEFAULT_TYPE FLUID_CHORUS_MOD_SINE
++#endif
++
+ // TYPES -------------------------------------------------------------------
+ 
+ // EXTERNAL FUNCTION PROTOTYPES --------------------------------------------

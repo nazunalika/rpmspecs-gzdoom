@@ -1,0 +1,22 @@
+From f006d85a5edb419950abd646de2b95cceedc43c7 Mon Sep 17 00:00:00 2001
+From: Tommy Nguyen <remyabel@gmail.com>
+Date: Mon, 25 Feb 2019 15:52:40 -0500
+Subject: [PATCH] Install asmjit
+
+---
+ asmjit/CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: a/asmjit/CMakeLists.txt
+===================================================================
+--- a/asmjit/CMakeLists.txt
++++ b/asmjit/CMakeLists.txt
+@@ -97,7 +97,7 @@ set(ASMJIT_SRCS
+     asmjit/x86/x86regalloc.cpp
+ )
+
+-add_library(${ASMJITNAME} ${ASMJIT_SRCS} ${ASMJIT_PUBLIC_HDRS})
++add_library(${ASMJITNAME} STATIC ${ASMJIT_SRCS} ${ASMJIT_PUBLIC_HDRS})
+
+ set_target_properties(${ASMJITNAME} PROPERTIES OUTPUT_NAME asmjit)
+
