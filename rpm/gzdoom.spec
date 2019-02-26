@@ -1,11 +1,11 @@
 Name:           gzdoom
 Version:        3.7.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPLv3
-Group:          Games/Shooter
 Url:            http://zdoom.org
 Source0:        https://github.com/coelckers/gzdoom/archive/g%{version}.tar.gz
+Source1:        gzdoom.desktop
 
 Provides:       zdoom = 2.8.1
 Provides:       qzdoom = 1.3.0
@@ -51,20 +51,35 @@ Requires:       SDL2
 
 %if 0%{?fedora}
 Recommends:     freedoom
-Recommends:     timidity++
+#Recommends:     timidity++
 %endif
 
 %description
-GZDoom is a port (a modification) of the original Doom source code, featuring:
-  * an OpenGL renderer, HQnX rescaling, 3D floor and model support
-  * Truecolor software rendering, extending the classic 8-bit palette
-  * a three-point projection software renderer, extending the classic
-    2-point projection
-  * Heretic, Hexen and Strife game modes and support for a lot of
-    additional IWADs.
-  * Boom and Hexen map extension support, scriptability with ACS and
-    ZScript, and various modding features regarding actors and scenery.
-  * Demo record/playback of classic and Boom demos is not supported.
+ZDoom is a family of enhanced ports (modifications) of the Doom engine for
+running on modern operating systems. It runs on Windows, Linux, and OS X, and
+adds new features not found in the games as originally published by id Software.
+
+ZDoom features the following that is not found in the original Doom:
+
+  * Runs on all modern versions of Windows, Mac, and Linux distributions
+  * Can play all Doom engine games, including Ultimate Doom, Doom II, Heretic,
+    Hexen, Strife, and more
+  * Supports all editing features of Hexen
+  * Supports most of the Boom editing features
+  * Supports new features such as colored lighting, 3D floors, and much more
+  * All Doom limits are gone
+  * Several softsynths for MUS and MIDI playback, including OPL softsynth for an
+    authentitc "oldschool" flavor
+  * High resolutions
+  * Quake-style console and key bindings
+  * Crosshairs
+  * Free look
+  * Jumping, crouching, swimming, and flying
+  * Up to 8 player network games using UDP/IP, including team-based gameplay
+  * Support for the Bloodbath announcer from the classic Monolith game Blood
+  * Walk over/under monsters and other things
+
+GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
 %setup -q -n %{name}-g%{version}
@@ -86,6 +101,12 @@ make %{?_smp_mflags}
 
 %install
 make DESTDIR=%{buildroot} install
+%{__install} -m 0644 %{SOURCE1} \
+  %{_datadir}/applications/gzdoom.desktop
+
+# Don't know why but the XPM isn't put anywhere
+cp %{_builddir}/%{name}-g%{version}/src/posix/zdoom.xpm \
+  %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %post
 echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
@@ -96,9 +117,18 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_bindir}/%{name}
 %{_datadir}/doom/*
 %{_docdir}/%{name}/*
+%{_datadir}/applications/gzdoom.desktop
+%{_datadir}/icons/gzdoom.desktop
+%{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
-* Mon Feb 25 2019 Tommy Nguyen <remyabel@gmail.com> - 3.7.2-2
+* Mon Feb 25 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-3
+- Added application file for games menu
+- Updated description
+- Removed timidity++ as a weak dependency
+- Removed Group section as it is not required
+
+* Mon Feb 25 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-2
 - Added back qzdoom provides
 - Added patch to allow build to work with fluidsynth 2
   for when Fedora decides to rebase

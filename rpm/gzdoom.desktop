@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GZDoom
+Comment=Enhanced port of the Doom Engine
+Exec=gzdoom
+Icon=gzdoom
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;
+Keywords=game;gzdoom;zdoom;doom;first;person;shooter;
+X-Desktop-File-Install-Version=0.23
