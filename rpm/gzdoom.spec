@@ -100,13 +100,21 @@ perl -i -pe 's{<unknown version>}{%version}g' \
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install
+rm -rf $RPM_BUILD_ROOT
+
+%make_install
+
 %{__install} -m 0644 %{SOURCE1} \
-  %{_datadir}/applications/gzdoom.desktop
+  ${RPM_BUILD_ROOT}%{_datadir}/applications/gzdoom.desktop
 
 # Don't know why but the XPM isn't put anywhere
 cp %{_builddir}/%{name}-g%{version}/src/posix/zdoom.xpm \
-  %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
+  ${RPM_BUILD_ROOT}%{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
+
+# Fallback soundfont
+%{__mkdir} ${RPM_BUILD_ROOT}%{_datadir}/doom/soundfonts
+cp %{_builddir}/%{name}-g%{version}/soundfont/gzdoom.sf2 \
+  ${RPM_BUILD_ROOT}%{_datadir}/doom/soundfonts/gzdoom.sf2
 
 %post
 echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
@@ -118,7 +126,6 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/doom/*
 %{_docdir}/%{name}/*
 %{_datadir}/applications/gzdoom.desktop
-%{_datadir}/icons/gzdoom.desktop
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
@@ -127,6 +134,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 - Updated description
 - Removed timidity++ as a weak dependency
 - Removed Group section as it is not required
+- Added fallback soundfont from the sources
 
 * Mon Feb 25 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-2
 - Added back qzdoom provides
