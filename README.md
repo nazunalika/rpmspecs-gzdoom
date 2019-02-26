@@ -1,1 +1,0 @@
-# rpmspecs-gzdoom

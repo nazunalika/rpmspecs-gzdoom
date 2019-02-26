@@ -1,7 +1,12 @@
+# Global settings
+%global major_version 3
+%global minor_version 7
+%global micro_version 2
+
 Name:           gzdoom
-Version:        3.7.2
+Version:        %{major_version}.%{minor_version}.%{micro_version}
 Release:        3%{?dist}
-Summary:        A DOOM source port with graphic and modding extensions
+Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
 Source0:        https://github.com/coelckers/gzdoom/archive/g%{version}.tar.gz
@@ -17,7 +22,6 @@ Provides:       qzdoom = 1.3.0
 Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-wadsrc-extra.patch
 Patch3:         gzdoom-staticlibs.patch
-Patch5:         gzdoom-lzma.patch
 Patch6:         gzdoom-asmjit.patch
 Patch7:         gzdoom-fl2.patch
 
@@ -51,7 +55,6 @@ Requires:       SDL2
 
 %if 0%{?fedora}
 Recommends:     freedoom
-#Recommends:     timidity++
 %endif
 
 %description
@@ -104,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %make_install
 
+%{__mkdir} -p ${RPM_BUILD_ROOT}%{_datadir}/applications/
 %{__install} -m 0644 %{SOURCE1} \
   ${RPM_BUILD_ROOT}%{_datadir}/applications/gzdoom.desktop
 
