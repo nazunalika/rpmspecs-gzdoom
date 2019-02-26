@@ -107,11 +107,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %make_install
 
-%{__mkdir} -p ${RPM_BUILD_ROOT}%{_datadir}/applications/
+%{__mkdir} -p ${RPM_BUILD_ROOT}%{_datadir}/applications
 %{__install} -m 0644 %{SOURCE1} \
   ${RPM_BUILD_ROOT}%{_datadir}/applications/gzdoom.desktop
 
 # Don't know why but the XPM isn't put anywhere
+%{__mkdir} -p ${RPM_BUILD_ROOT}%{_datadir}/icons/hicolor/256x256/apps
 cp %{_builddir}/%{name}-g%{version}/src/posix/zdoom.xpm \
   ${RPM_BUILD_ROOT}%{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
