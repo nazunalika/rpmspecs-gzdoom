@@ -134,6 +134,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
+* Tue Apr 09 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-4
+- Adding Fedora 30 to build
+
 * Mon Feb 25 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-3
 - Added application file for games menu
 - Updated description
