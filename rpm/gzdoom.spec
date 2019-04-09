@@ -49,18 +49,16 @@ BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(libmpg123)
 
 # I'm adding opensuse support below
-#%if 0%{?fedora}
+%if 0%{?fedora}
 BuildRequires:  timidity++
 BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  wildmidi-devel
-#%elif 0%{?suse_version}
-#BuildRequires:  timidity
-#BuildRequires:  libjpeg-devel
-#%endif
-
-# End
-
 Requires:       wildmidi
+%elif 0%{?suse_version}
+BuildRequires:  timidity
+BuildRequires:  libjpeg-devel
+%endif
+
 Requires:       openal-soft
 Requires:       fluidsynth
 Requires:       SDL2
@@ -149,6 +147,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %changelog
 * Tue Apr 09 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-4
 - Adding Fedora 30 to build
+- Added OpenSUSE Tumbleweed as a distribution
 - Some BuildRequires converted to pkgconfig based on fedora spec
 
 * Mon Feb 25 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-3
