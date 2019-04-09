@@ -49,14 +49,16 @@ BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(libmpg123)
 
 # I'm adding opensuse support below
-%if 0%{?fedora}
+# I'm checking to see if suse_version is defined, because
+# I'm primarily targetting Fedora.
+%if 0%{?suse_version}
+BuildRequires:  timidity
+BuildRequires:  libjpeg-devel
+%else
 BuildRequires:  timidity++
 BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  wildmidi-devel
 Requires:       wildmidi
-%elif 0%{?suse_version}
-BuildRequires:  timidity
-BuildRequires:  libjpeg-devel
 %endif
 
 Requires:       openal-soft
@@ -64,9 +66,6 @@ Requires:       fluidsynth
 Requires:       SDL2
 
 Recommends:     freedoom
-
-#%if 0%{?fedora}
-#%endif
 
 %description
 ZDoom is a family of enhanced ports (modifications) of the Doom engine for
