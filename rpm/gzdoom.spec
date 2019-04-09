@@ -29,33 +29,46 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
 BuildRequires:  make
 BuildRequires:  cmake
-BuildRequires:  SDL2-devel
-BuildRequires:  git
-BuildRequires:  zlib-devel
-BuildRequires:  bzip2-devel
-BuildRequires:  libjpeg-turbo-devel
-BuildRequires:  fluidsynth-devel
-BuildRequires:  game-music-emu-devel
-BuildRequires:  openal-soft-devel
-BuildRequires:  libmpg123-devel
-BuildRequires:  libsndfile-devel
-BuildRequires:  wildmidi-devel
-BuildRequires:  gtk3-devel
-BuildRequires:  timidity++
-BuildRequires:  nasm
-BuildRequires:  mesa-libGL-devel
 BuildRequires:  tar
-BuildRequires:  SDL-devel
+BuildRequires:  git
+BuildRequires:  nasm
 BuildRequires:  glew-devel
+
+# pkgconfig
+BuildRequires:  pkgconfig(flac)
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(libgme)
+BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(libmpg123)
+
+# I'm adding opensuse support below
+#%if 0%{?fedora}
+BuildRequires:  timidity++
+BuildRequires:  libjpeg-turbo-devel
+BuildRequires:  wildmidi-devel
+#%elif 0%{?suse_version}
+#BuildRequires:  timidity
+#BuildRequires:  libjpeg-devel
+#%endif
+
+# End
 
 Requires:       wildmidi
 Requires:       openal-soft
 Requires:       fluidsynth
 Requires:       SDL2
 
-%if 0%{?fedora}
 Recommends:     freedoom
-%endif
+
+#%if 0%{?fedora}
+#%endif
 
 %description
 ZDoom is a family of enhanced ports (modifications) of the Doom engine for
@@ -136,6 +149,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %changelog
 * Tue Apr 09 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-4
 - Adding Fedora 30 to build
+- Some BuildRequires converted to pkgconfig based on fedora spec
 
 * Mon Feb 25 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-3
 - Added application file for games menu
