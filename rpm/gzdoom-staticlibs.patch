@@ -1,23 +1,17 @@
-From: Jan Engelhardt <jengelh@inai.de>
-Date: 2018-01-02 19:17:14.364202580 +0100
-
-Some bundled code (which is also an older version and cannot simply be switched
-out just yet) needs to be explicitly set to STATIC, or cmake will generate
-files like "liblzma.so" etc. with no versioning and which are not installed by
-cmake_install.
-
----
- CMakeLists.txt       |    1 -
- dumb/CMakeLists.txt  |    2 +-
- gdtoa/CMakeLists.txt |    2 +-
- lzma/CMakeLists.txt  |    2 +-
- 4 files changed, 3 insertions(+), 4 deletions(-)
-
-Index: gzdoom-g3.2.4/dumb/CMakeLists.txt
-===================================================================
---- gzdoom-g3.2.4.orig/dumb/CMakeLists.txt
-+++ gzdoom-g3.2.4/dumb/CMakeLists.txt
-@@ -24,7 +24,7 @@ endif()
+--- gzdoom-g4.0.0-orig/asmjit/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
++++ gzdoom-g4.0.0/asmjit/CMakeLists.txt	2019-04-16 11:57:58.349522685 -0700
+@@ -97,7 +97,7 @@
+     asmjit/x86/x86regalloc.cpp
+ )
+ 
+-add_library(${ASMJITNAME} ${ASMJIT_SRCS} ${ASMJIT_PUBLIC_HDRS})
++add_library(${ASMJITNAME} STATIC ${ASMJIT_SRCS} ${ASMJIT_PUBLIC_HDRS})
+ 
+ set_target_properties(${ASMJITNAME} PROPERTIES OUTPUT_NAME asmjit)
+ 
+--- gzdoom-g4.0.0-orig/dumb/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
++++ gzdoom-g4.0.0/dumb/CMakeLists.txt	2019-04-16 11:50:31.315715842 -0700
+@@ -24,7 +24,7 @@
  
  include_directories( include )
  
@@ -26,11 +20,9 @@ Index: gzdoom-g3.2.4/dumb/CMakeLists.txt
      src/core/unload.c
      src/core/rendsig.c
      src/core/rendduh.c
-Index: gzdoom-g3.2.4/gdtoa/CMakeLists.txt
-===================================================================
---- gzdoom-g3.2.4.orig/gdtoa/CMakeLists.txt
-+++ gzdoom-g3.2.4/gdtoa/CMakeLists.txt
-@@ -35,7 +35,7 @@ if( NOT MSVC AND NOT APPLE )
+--- gzdoom-g4.0.0-orig/gdtoa/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
++++ gzdoom-g4.0.0/gdtoa/CMakeLists.txt	2019-04-16 11:51:11.654326836 -0700
+@@ -35,7 +35,7 @@
  	set( GEN_FP_DEPS ${CMAKE_CURRENT_BINARY_DIR}/arith.h ${CMAKE_CURRENT_BINARY_DIR}/gd_qnan.h )
  endif()
  
@@ -39,11 +31,9 @@ Index: gzdoom-g3.2.4/gdtoa/CMakeLists.txt
  	${GEN_FP_FILES}
  	dmisc.c
  	dtoa.c
-Index: gzdoom-g3.2.4/lzma/CMakeLists.txt
-===================================================================
---- gzdoom-g3.2.4.orig/lzma/CMakeLists.txt
-+++ gzdoom-g3.2.4/lzma/CMakeLists.txt
-@@ -34,5 +34,5 @@ else()
+--- gzdoom-g4.0.0-orig/lzma/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
++++ gzdoom-g4.0.0/lzma/CMakeLists.txt	2019-04-16 11:51:36.964710203 -0700
+@@ -34,5 +34,5 @@
  	set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_7ZIP_ST" )
  endif()
  

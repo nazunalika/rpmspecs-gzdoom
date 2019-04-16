@@ -1,22 +1,22 @@
-From: Jan Engelhardt <jengelh@inai.de>
-2018-01-02 15:25:05.669125932 +0100
+From: Louis Abel <tucklesepk@gmail.com>
+2019-04-16 11:40:09.796301919 -0700
 
-Ensure same IWAD directory across all Doom source ports in openSUSE
+Ensuring that the IWAD directory is the same in all source ports for
+Fedora and OpenSUSE
 
 ---
  src/posix/i_system.h |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: gzdoom-g3.2.4/src/posix/i_system.h
+Index: gzdoom-g4.0.0/src/posix/i_system.h
 ===================================================================
---- gzdoom-g3.2.4.orig/src/posix/i_system.h
-+++ gzdoom-g3.2.4/src/posix/i_system.h
-@@ -40,7 +40,7 @@ struct ticcmd_t;
+--- gzdoom-g4.0.0-orig/src/posix/i_system.h	2019-04-07 00:11:51.000000000 -0700
++++ gzdoom-g4.0.0/src/posix/i_system.h	2019-04-16 11:40:09.796301919 -0700
+@@ -42,7 +42,7 @@
  struct WadStuff;
  
  #ifndef SHARE_DIR
 -#define SHARE_DIR "/usr/local/share/"
 +#define SHARE_DIR "/usr/share/doom/"
  #endif
- 
- // Index values into the LanguageIDs array
+
