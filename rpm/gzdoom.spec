@@ -20,7 +20,7 @@ Provides:       qzdoom = 1.3.0
 #Provides:       bundled(re2c) = 0.16.0
 
 Patch1:         %{name}-waddir.patch
-#Patch2:         %{name}-wadsrc-extra.patch
+#Patch2:         gzdoom-wadsrc-extra.patch
 Patch3:         %{name}-staticlibs.patch
 Patch7:         %{name}-fl2.patch
 
@@ -147,6 +147,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 * Tue Apr 16 2019 Louis Abel <tucklesepk@gmail.com> - 4.0.0-1
 - Rebase to 4.0.0
 - Fixed, removed, redid patches as needed
+- 32 bit builds are no longer supported
 
 * Tue Apr 09 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-4
 - Adding Fedora 30 to build

@@ -10,6 +10,8 @@ Information
 
 **Note:** I am not responsible for system damages, break-ins, or faulty code of the software that can cause the formerly listed. Always develop and test in an isolated environment at all times. **Always keep SELinux enabled.**
 
+**Note:** 32 bit builds have been disabled. Please use 64 bit.
+
 Frequently Asked Questions
 --------------------------
 
