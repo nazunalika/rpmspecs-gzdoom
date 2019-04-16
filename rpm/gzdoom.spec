@@ -1,7 +1,7 @@
 # Global settings
-%global major_version 3
-%global minor_version 7
-%global micro_version 2
+%global major_version 4
+%global minor_version 0
+%global micro_version 0
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
@@ -144,6 +144,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
+* Tue Apr 16 2019 Louis Abel <tucklesepk@gmail.com> - 4.0.0-1
+- Rebase to 4.0.0
+
 * Tue Apr 09 2019 Louis Abel <tucklesepk@gmail.com> - 3.7.2-4
 - Adding Fedora 30 to build
 - Added OpenSUSE Tumbleweed as a distribution
