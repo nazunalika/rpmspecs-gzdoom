@@ -40,3 +40,25 @@
 -add_library( lzma ${LZMA_FILES} )
 +add_library( lzma STATIC ${LZMA_FILES} )
  target_link_libraries( lzma )
+--- gzdoom-g4.0.0-orig/glslang/spirv/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
++++ gzdoom-g4.0.0/glslang/spirv/CMakeLists.txt	2019-04-28 11:24:31.063963399 -0700
+@@ -44,6 +44,8 @@
+     SPVRemapper.h
+     doc.h)
+ 
++set(LIB_TYPE STATIC)
++
+ if(ENABLE_AMD_EXTENSIONS)
+     list(APPEND
+          HEADERS
+--- gzdoom-g4.0.0-orig/glslang/glslang/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
++++ gzdoom-g4.0.0/glslang/glslang/CMakeLists.txt	2019-04-28 11:27:38.992442803 -0700
+@@ -97,6 +97,8 @@
+     MachineIndependent/preprocessor/PpContext.h
+     MachineIndependent/preprocessor/PpTokens.h)
+ 
++set(LIB_TYPE STATIC)
++
+ # This might be useful for making grammar changes:
+ #
+ # find_package(BISON)
