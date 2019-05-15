@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
-%global minor_version 0
-%global micro_version 0
+%global minor_version 1
+%global micro_version 1
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
@@ -95,7 +95,6 @@ GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
 %setup -q -n %{name}-g%{version}
-#%patch -P 1 -P 2 -P 3 -P 6 -P 7 -p1
 %patch -P 1 -P 3 -P 7 -p1
 
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
@@ -144,6 +143,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
+* Tue May 15 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.1-5
+- Update to 4.1.1
+
 * Sun Apr 28 2019 Louis Abel <tucklesepk@gmail.com> - 4.0.0-5
 - Added more static libraries in patches
 
