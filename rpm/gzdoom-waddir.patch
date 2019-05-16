@@ -1,15 +1,3 @@
-From: Louis Abel <tucklesepk@gmail.com>
-2019-04-16 11:40:09.796301919 -0700
-
-Ensuring that the IWAD directory is the same in all source ports for
-Fedora and OpenSUSE
-
----
- src/posix/i_system.h |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-Index: gzdoom-g4.0.0/src/posix/i_system.h
-===================================================================
 --- gzdoom-g4.0.0-orig/src/posix/i_system.h	2019-04-07 00:11:51.000000000 -0700
 +++ gzdoom-g4.0.0/src/posix/i_system.h	2019-04-16 11:40:09.796301919 -0700
 @@ -42,7 +42,7 @@
