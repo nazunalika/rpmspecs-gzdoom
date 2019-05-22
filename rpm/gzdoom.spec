@@ -144,8 +144,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %changelog
 * Wed May 22 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.2-5
 - Update to 4.1.2
+- Modified patches
 
-* Tue May 15 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.1-5
+* Wed May 15 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.1-5
 - Update to 4.1.1
 
 * Sun Apr 28 2019 Louis Abel <tucklesepk@gmail.com> - 4.0.0-5
