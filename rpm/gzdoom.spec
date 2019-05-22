@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
 %global minor_version 1
-%global micro_version 1
+%global micro_version 2
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
@@ -20,7 +20,6 @@ Provides:       qzdoom = 1.3.0
 #Provides:       bundled(re2c) = 0.16.0
 
 Patch1:         %{name}-waddir.patch
-#Patch2:         gzdoom-wadsrc-extra.patch
 Patch3:         %{name}-staticlibs.patch
 Patch7:         %{name}-fl2.patch
 
@@ -143,6 +142,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
+* Wed May 22 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.2-5
+- Update to 4.1.2
+
 * Tue May 15 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.1-5
 - Update to 4.1.1
 
