@@ -9,17 +9,6 @@
  
  set_target_properties(${ASMJITNAME} PROPERTIES OUTPUT_NAME asmjit)
  
---- gzdoom-g4.0.0-orig/dumb/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
-+++ gzdoom-g4.0.0/dumb/CMakeLists.txt	2019-04-16 11:50:31.315715842 -0700
-@@ -24,7 +24,7 @@
- 
- include_directories( include )
- 
--add_library( dumb
-+add_library( dumb STATIC
-     src/core/unload.c
-     src/core/rendsig.c
-     src/core/rendduh.c
 --- gzdoom-g4.0.0-orig/gdtoa/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
 +++ gzdoom-g4.0.0/gdtoa/CMakeLists.txt	2019-04-16 11:51:11.654326836 -0700
 @@ -35,7 +35,7 @@
