@@ -10,7 +10,7 @@ Information
 
 **Note:** I am not responsible for system damages, break-ins, or faulty code of the software that can cause the formerly listed. Always develop and test in an isolated environment at all times. **Always keep SELinux enabled.**
 
-**Note:** 32 bit builds have been disabled. Please use 64 bit. If you are wanting an ARM build, it may require you to build your own SRPM and build it yourself. I currently do not have any ARM build targets.
+**Note:** 32 bit builds have been disabled. Please use 64 bit. Arm builds are now supported: AARCH64
 
 Frequently Asked Questions
 --------------------------
@@ -50,7 +50,7 @@ Do you package for other systems?
 
 At this present time, I do not. I have considered packaging for OpenSUSE. However OpenSUSE, much like Arch, already have plenty of maintainers with tons upon tons of packages (up to date or not) and their own build systems similar to Fedora. So some of the packages you may see here may already exist for those distributions in base or extra repositories they provide. The COPR build system does support OpenSUSE now, so it may end up being a viable option in the future.
 
-Presently, this does not build in copr for OpenSUSE, simply because dependencies are not in the SUSE base.
+Presently, this does not build in copr for OpenSUSE, simply because dependencies are not in the SUSE base. I do not have a way to extend copr to the additional repositories.
 
 .. rubric:: Footnotes
 

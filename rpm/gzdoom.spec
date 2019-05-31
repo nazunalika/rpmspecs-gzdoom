@@ -5,7 +5,7 @@
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -142,6 +142,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
+* Fri May 31 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.2-6
+- Added AARCH64 to builds
+
 * Wed May 22 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.2-5
 - Update to 4.1.2
 - Modified patches
