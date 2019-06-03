@@ -144,6 +144,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %changelog
 * Fri May 31 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.2-6
 - Added AARCH64 to builds
+- Added i386 back to builds
 
 * Wed May 22 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.2-5
 - Update to 4.1.2
