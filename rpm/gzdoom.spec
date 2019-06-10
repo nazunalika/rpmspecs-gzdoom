@@ -94,7 +94,7 @@ GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
 %setup -q -n %{name}-g%{version}
-%patch -P 1 -P 3 -P 7 -p1
+%patch -P 1 -P 7 -p1
 
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
@@ -144,6 +144,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %changelog
 * Mon Jun 10 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.3-1
 - Update to 4.1.3
+- Removed static patches as most defaults to static
 
 * Fri May 31 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.2-6
 - Added AARCH64 to builds

@@ -1,34 +1,3 @@
---- gzdoom-g4.0.0-orig/asmjit/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
-+++ gzdoom-g4.0.0/asmjit/CMakeLists.txt	2019-04-16 11:57:58.349522685 -0700
-@@ -97,7 +97,7 @@
-     asmjit/x86/x86regalloc.cpp
- )
- 
--add_library(${ASMJITNAME} ${ASMJIT_SRCS} ${ASMJIT_PUBLIC_HDRS})
-+add_library(${ASMJITNAME} STATIC ${ASMJIT_SRCS} ${ASMJIT_PUBLIC_HDRS})
- 
- set_target_properties(${ASMJITNAME} PROPERTIES OUTPUT_NAME asmjit)
- 
---- gzdoom-g4.0.0-orig/gdtoa/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
-+++ gzdoom-g4.0.0/gdtoa/CMakeLists.txt	2019-04-16 11:51:11.654326836 -0700
-@@ -35,7 +35,7 @@
- 	set( GEN_FP_DEPS ${CMAKE_CURRENT_BINARY_DIR}/arith.h ${CMAKE_CURRENT_BINARY_DIR}/gd_qnan.h )
- endif()
- 
--add_library( gdtoa
-+add_library( gdtoa STATIC
- 	${GEN_FP_FILES}
- 	dmisc.c
- 	dtoa.c
---- gzdoom-g4.0.0-orig/lzma/CMakeLists.txt	2019-04-07 00:11:51.000000000 -0700
-+++ gzdoom-g4.0.0/lzma/CMakeLists.txt	2019-04-16 11:51:36.964710203 -0700
-@@ -34,5 +34,5 @@
- 	set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_7ZIP_ST" )
- endif()
- 
--add_library( lzma ${LZMA_FILES} )
-+add_library( lzma STATIC ${LZMA_FILES} )
- target_link_libraries( lzma )
 --- gzdoom-g4.1.2-orig/glslang/spirv/CMakeLists.txt     2019-05-14 12:08:00.000000000 -0700
 +++ gzdoom-g4.1.2/glslang/spirv/CMakeLists.txt  2019-05-22 12:12:19.940469685 -0700
 @@ -47,6 +47,8 @@
@@ -40,14 +9,3 @@
  if(ENABLE_AMD_EXTENSIONS)
      list(APPEND
           HEADERS
---- gzdoom-g4.1.2-orig/glslang/glslang/CMakeLists.txt   2019-05-14 12:08:00.000000000 -0700
-+++ gzdoom-g4.1.2/glslang/glslang/CMakeLists.txt        2019-05-22 12:13:10.847208643 -0700
-@@ -97,6 +97,8 @@
-     MachineIndependent/preprocessor/PpContext.h
-     MachineIndependent/preprocessor/PpTokens.h)
- 
-+set(LIB_TYPE STATIC)
-+
- # This might be useful for making grammar changes:
- #
- # find_package(BISON)
