@@ -20,7 +20,6 @@ Provides:       qzdoom = 1.3.0
 #Provides:       bundled(re2c) = 0.16.0
 
 Patch1:         %{name}-waddir.patch
-Patch3:         %{name}-staticlibs.patch
 Patch7:         %{name}-fl2.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -105,6 +104,7 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         -DCMAKE_SHARED_LINKER_FLAGS="" \
         -DCMAKE_EXE_LINKER_FLAGS="" \
         -DCMAKE_MODULE_LINKER_FLAGS="" \
+        -DBUILD_SHARED_LIBS="OFF" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
         -DINSTALL_PK3_PATH="%{_datadir}/doom"
 
@@ -144,7 +144,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %changelog
 * Mon Jun 10 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.3-1
 - Update to 4.1.3
-- Removed static patches as most defaults to static
+- Removed static patches
 
 * Fri May 31 2019 Louis Abel <tucklesepk@gmail.com> - 4.1.2-6
 - Added AARCH64 to builds
