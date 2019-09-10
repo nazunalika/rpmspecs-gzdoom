@@ -20,7 +20,6 @@ Provides:       qzdoom = 1.3.0
 #Provides:       bundled(re2c) = 0.16.0
 
 Patch1:         %{name}-waddir.patch
-Patch7:         %{name}-fl2.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -144,6 +143,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %changelog
 * Mon Sep 09 2019 Louis Abel <tucklesepk@gmail.com> - 4.2.1-1
 - Update to 4.2.1
+- Remove fl2 patch as it is now in code
 
 * Mon Aug 12 2019 Louis Abel <tucklesepk@gmail.com> - 4.2.0-1
 - Update to 4.2.0
