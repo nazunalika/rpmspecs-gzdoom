@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
 %global minor_version 2
-%global micro_version 3
+%global micro_version 4
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
