@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
 %global minor_version 3
-%global micro_version 1
+%global micro_version 2
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
@@ -141,6 +141,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
+* Sun Jan 12 2020 Louis Abel <tucklesepk@gmail.com> - 4.3.2-1
+- Update to 4.3.2
+
 * Sun Jan 05 2020 Louis Abel <tucklesepk@gmail.com> - 4.3.1-1
 - Update to 4.3.1
 
