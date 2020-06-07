@@ -95,15 +95,16 @@ GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
 %setup -q -D -n %{name}-g%{version}
-%setup -q -T -D -a 2
 %patch -P 1 -p1
 
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
         tools/updaterevision/updaterevision.c
 
-%build
+# Extract zmusic
+gzip -dc %{_sourcedir}/1.1.0.tar.gz | tar -xf -
 
+%build
 # We need zmusic first
 mkdir ZMusic-%{zmusic_version}/build
 cd ZMusic-%{zmusic_version}/build
