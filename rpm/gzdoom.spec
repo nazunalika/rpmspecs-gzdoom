@@ -102,7 +102,7 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         tools/updaterevision/updaterevision.c
 
 # Extract zmusic
-gzip -dc %{_sourcedir}/1.1.0.tar.gz | tar -xf -
+gzip -dc %{_sourcedir}/%{zmusic_version}.tar.gz | tar -xf -
 
 %build
 # We need zmusic first
@@ -121,9 +121,7 @@ cd ../..
         -DBUILD_SHARED_LIBS="OFF" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
         -DINSTALL_PK3_PATH="%{_datadir}/doom" \
-        # ZMusic refs
-        -DZMUSIC_INCLUDE_DIR="./ZMusic-%{zmusic_version}/build_install/include" \
-        -DZMUSIC_LIBRARIES="./ZMusic-%{zmusic_version}/build_install/lib/libzmusic.so"
+        -DCMAKE_PREFIX_PATH="%{_builddir}/%{name}-g%{version}/ZMusic-%{zmusic_version}/build_install"
 
 make %{?_smp_mflags}
 
