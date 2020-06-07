@@ -143,6 +143,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %changelog
 * Sun Jun 07 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.0-1
 - Update to 4.4.0
+- Fix waddir patch
 
 * Mon Jan 20 2020 Louis Abel <tucklesepk@gmail.com> - 4.3.3-1
 - Update to 4.3.3

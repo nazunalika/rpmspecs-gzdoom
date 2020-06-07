@@ -1,10 +1,12 @@
---- gzdoom-g4.0.0-orig/src/posix/i_system.h	2019-04-07 00:11:51.000000000 -0700
-+++ gzdoom-g4.0.0/src/posix/i_system.h	2019-04-16 11:40:09.796301919 -0700
-@@ -42,7 +42,7 @@
+diff -urN gzdoom-g4.4.0-orig/src/common/platform/posix/i_system.h gzdoom-g4.4.0/src/common/platform/posix/i_system.h
+--- gzdoom-g4.4.0-orig/src/common/platform/posix/i_system.h	2020-06-07 09:11:40.000000000 -0700
++++ gzdoom-g4.4.0/src/common/platform/posix/i_system.h	2020-06-07 11:08:41.200380904 -0700
+@@ -17,7 +17,7 @@
  struct WadStuff;
  
  #ifndef SHARE_DIR
 -#define SHARE_DIR "/usr/local/share/"
 +#define SHARE_DIR "/usr/share/doom/"
  #endif
-
+ 
+ void CalculateCPUSpeed(void);
