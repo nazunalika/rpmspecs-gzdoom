@@ -2,6 +2,7 @@
 %global major_version 4
 %global minor_version 4
 %global micro_version 0
+%global zmusic_version 1.1.0
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
@@ -11,9 +12,11 @@ License:        GPLv3
 Url:            http://zdoom.org
 Source0:        https://github.com/coelckers/gzdoom/archive/g%{version}.tar.gz
 Source1:        gzdoom.desktop
+Source2:        https://github.com/coelckers/ZMusic/archive/%{zmusic_version}.tar.gz
 
 Provides:       zdoom = 2.8.1
 Provides:       qzdoom = 1.3.0
+Provides:       zmusic = 1.1.0
 #Provides:       bundled(lzma-sdk) = 17.01
 #Provides:       bundled(dumb) = 0.9.3
 #Provides:       bundled(gdtoa)
@@ -91,12 +94,22 @@ ZDoom features the following that is not found in the original Doom:
 GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
-%setup -q -n %{name}-g%{version}
+%setup -q -D -n %{name}-g%{version}
+%setup -q -T -D -a 2 -n ZMusic-%{zmusic_version}
 %patch -P 1 -p1
 
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
         tools/updaterevision/updaterevision.c
+
+# We need zmusic first
+cd ZMusic-%{zmusic_version}
+mkdir build
+cd build
+%cmake  -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=`pwd`/../build_install ..
+
+%make_install
 
 %build
 %cmake  -DNO_STRIP=1 \
@@ -144,6 +157,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 * Sun Jun 07 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.0-1
 - Update to 4.4.0
 - Fix waddir patch
+- Add ZMusic as part of build
 
 * Mon Jan 20 2020 Louis Abel <tucklesepk@gmail.com> - 4.3.3-1
 - Update to 4.3.3
