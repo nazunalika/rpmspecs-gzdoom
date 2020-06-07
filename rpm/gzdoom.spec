@@ -120,7 +120,10 @@ cd ../..
         -DCMAKE_MODULE_LINKER_FLAGS="" \
         -DBUILD_SHARED_LIBS="OFF" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
-        -DINSTALL_PK3_PATH="%{_datadir}/doom"
+        -DINSTALL_PK3_PATH="%{_datadir}/doom" \
+        # ZMusic refs
+        -DZMUSIC_INCLUDE_DIR="./ZMusic-%{zmusic_version}/build_install/include" \
+        -DZMUSIC_LIBRARIES="./ZMusic-%{zmusic_version}/build_install/lib/libzmusic.so"
 
 make %{?_smp_mflags}
 
