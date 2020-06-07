@@ -94,7 +94,7 @@ ZDoom features the following that is not found in the original Doom:
 GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
-%setup -q -D -n %{name}-g%{version}
+%setup -q -n %{name}-g%{version}
 %patch -P 1 -p1
 
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
@@ -102,17 +102,19 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         tools/updaterevision/updaterevision.c
 
 # Extract zmusic
+pushd ..
 gzip -dc %{_sourcedir}/%{zmusic_version}.tar.gz | tar -xf -
+popd
 
 %build
 # We need zmusic first
-mkdir ZMusic-%{zmusic_version}/build
-cd ZMusic-%{zmusic_version}/build
+mkdir ../ZMusic-%{zmusic_version}/build
+pushd ../ZMusic-%{zmusic_version}/build
 %cmake  -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=`pwd`/../build_install ..
 
 %make_install
-cd ../..
+popd
 
 %cmake  -DNO_STRIP=1 \
         -DCMAKE_SHARED_LINKER_FLAGS="" \
@@ -121,9 +123,9 @@ cd ../..
         -DBUILD_SHARED_LIBS="OFF" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
         -DINSTALL_PK3_PATH="%{_datadir}/doom" \
-        -DZMUSIC_INCLUDE_DIR="%{_builddir}/%{name}-g%{version}/ZMusic-%{zmusic_version}/build_install/include" \
-        -DZMUSIC_LIBRARIES="%{_builddir}/%{name}-g%{version}/ZMusic-%{zmusic_version}/build_install/lib/libzmusic.so" \
-        -DCMAKE_PREFIX_PATH="%{_builddir}/%{name}-g%{version}/ZMusic-%{zmusic_version}/build_install"
+        -DCMAKE_PREFIX_PATH="%{_builddir}/ZMusic-%{zmusic_version}/build_install" \
+        -DZMUSIC_INCLUDE_DIR="%{_builddir}/ZMusic-%{zmusic_version}/build_install/include" \
+        -DZMUSIC_LIBRARIES="%{_builddir}/ZMusic-%{zmusic_version}/build_install/lib/libzmusic.so"
 
 make %{?_smp_mflags}
 
