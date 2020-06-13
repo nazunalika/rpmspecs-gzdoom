@@ -3,6 +3,7 @@
 %global minor_version 4
 %global micro_version 1
 %global zmusic_version 1.1.0
+%define debug_package %{nil}
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
