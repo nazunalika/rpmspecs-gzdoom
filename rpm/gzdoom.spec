@@ -113,6 +113,8 @@ pushd ../ZMusic-%{zmusic_version}/build
 %cmake  -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=%{_builddir}/ZMusic-%{zmusic_version}/build_install ..
 
+%make_install
+
 popd
 
 %cmake  -DNO_STRIP=1 \
@@ -131,7 +133,7 @@ make %{?_smp_mflags}
 %install
 rm -rf $RPM_BUILD_ROOT
 
-# Install zmusic libraries
+# Install zmusic libraries again, I'm sure there's a better way to handle this
 pushd ../ZMusic-%{zmusic_version}/build
 %make_install
 popd
