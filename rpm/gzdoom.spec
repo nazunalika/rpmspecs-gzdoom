@@ -101,7 +101,7 @@ perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
         tools/updaterevision/updaterevision.c
 
-# Extract zmusic
+# Extract zmusic - Need to make this a setup tag
 pushd ..
 gzip -dc %{_sourcedir}/%{zmusic_version}.tar.gz | tar -xf -
 popd
@@ -124,9 +124,9 @@ popd
         -DBUILD_SHARED_LIBS="OFF" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
         -DINSTALL_PK3_PATH="%{_datadir}/doom" \
-        -DCMAKE_PREFIX_PATH="%{_builddir}/ZMusic-%{zmusic_version}/build_install" \
-        -DZMUSIC_INCLUDE_DIR="%{_builddir}/ZMusic-%{zmusic_version}/build_install/include" \
-        -DZMUSIC_LIBRARIES="%{_builddir}/ZMusic-%{zmusic_version}/build_install/lib/libzmusic.so"
+        -DCMAKE_PREFIX_PATH="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install" \
+        -DZMUSIC_INCLUDE_DIR="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install/include" \
+        -DZMUSIC_LIBRARIES="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install/lib/libzmusic.so"
 
 make %{?_smp_mflags}
 
@@ -134,6 +134,7 @@ make %{?_smp_mflags}
 rm -rf $RPM_BUILD_ROOT
 
 # Install zmusic libraries again, I'm sure there's a better way to handle this
+# I'm just lazy right now
 pushd ../ZMusic-%{zmusic_version}/build
 %make_install
 popd
