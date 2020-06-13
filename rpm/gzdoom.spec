@@ -113,7 +113,6 @@ pushd ../ZMusic-%{zmusic_version}/build
 %cmake  -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=%{_builddir}/ZMusic-%{zmusic_version}/build_install ..
 
-%make_install
 popd
 
 %cmake  -DNO_STRIP=1 \
@@ -132,6 +131,12 @@ make %{?_smp_mflags}
 %install
 rm -rf $RPM_BUILD_ROOT
 
+# Install zmusic libraries
+pushd ../ZMusic-%{zmusic_version}/build
+%make_install
+popd
+
+# Install gzdoom
 %make_install
 
 %{__mkdir} -p ${RPM_BUILD_ROOT}%{_datadir}/applications
