@@ -112,9 +112,10 @@ popd
 mkdir ../ZMusic-%{zmusic_version}/build
 pushd ../ZMusic-%{zmusic_version}/build
 %cmake  -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=%{_builddir}/ZMusic-%{zmusic_version}/build_install ..
+        -DCMAKE_INSTALL_PREFIX=%{_prefix} ..
 
-%make_install
+make %{?_smp_mflags}
+#%make_install
 
 popd
 
@@ -125,17 +126,16 @@ popd
         -DBUILD_SHARED_LIBS="OFF" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
         -DINSTALL_PK3_PATH="%{_datadir}/doom" \
-        -DCMAKE_PREFIX_PATH="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install" \
-        -DZMUSIC_INCLUDE_DIR="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install/include" \
-        -DZMUSIC_LIBRARIES="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install/lib/libzmusic.so"
+        -DZMUSIC_INCLUDE_DIR="%{_includedir}" \
+        -DZMUSIC_LIBRARIES="%{_libdir}/libzmusic.so"
+        #-DCMAKE_PREFIX_PATH="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install"
 
 make %{?_smp_mflags}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-# Install zmusic libraries again, I'm sure there's a better way to handle this
-# I'm just lazy right now
+# I'm sure there's a better way to handle this
 pushd ../ZMusic-%{zmusic_version}/build
 %make_install
 popd
@@ -168,12 +168,14 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_docdir}/%{name}/*
 %{_datadir}/applications/gzdoom.desktop
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
+%{_libdir}/*
 
 %changelog
 * Sun Jun 07 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.1-1
 - Update to 4.4.1
 - Fix waddir patch
 - Add ZMusic as part of build
+- Remove debug info packages
 
 * Mon Jan 20 2020 Louis Abel <tucklesepk@gmail.com> - 4.3.3-1
 - Update to 4.3.3
