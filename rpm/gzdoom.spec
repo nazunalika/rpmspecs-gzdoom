@@ -114,8 +114,8 @@ pushd ../ZMusic-%{zmusic_version}/build
 %cmake  -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} ..
 
-make %{?_smp_mflags}
-#%make_install
+#make %{?_smp_mflags}
+%make_install
 
 popd
 
