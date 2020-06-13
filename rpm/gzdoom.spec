@@ -108,11 +108,13 @@ gzip -dc %{_sourcedir}/%{zmusic_version}.tar.gz | tar -xf -
 popd
 
 %build
-# We need zmusic first
+# We need zmusic first - and I don't understand why this goes to /usr/lib by
+# default
 mkdir ../ZMusic-%{zmusic_version}/build
 pushd ../ZMusic-%{zmusic_version}/build
 %cmake  -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=%{_prefix} ..
+        -DCMAKE_INSTALL_PREFIX=%{_prefix}
+        -DCMAKE_INSTALL_LIBDIR=%{_libdir} ..
 
 #make %{?_smp_mflags}
 %make_install
