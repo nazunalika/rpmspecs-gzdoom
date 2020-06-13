@@ -111,7 +111,7 @@ popd
 mkdir ../ZMusic-%{zmusic_version}/build
 pushd ../ZMusic-%{zmusic_version}/build
 %cmake  -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=`pwd`/../build_install ..
+        -DCMAKE_INSTALL_PREFIX=%{_builddir}/ZMusic-%{zmusic_version}/build_install ..
 
 %make_install
 popd
@@ -123,9 +123,9 @@ popd
         -DBUILD_SHARED_LIBS="OFF" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
         -DINSTALL_PK3_PATH="%{_datadir}/doom" \
-        -DCMAKE_PREFIX_PATH="%{buildroot}/%{_builddir}/ZMusic-%{zmusic_version}/build_install" \
-        -DZMUSIC_INCLUDE_DIR="%{buildroot}/%{_builddir}/ZMusic-%{zmusic_version}/build_install/include" \
-        -DZMUSIC_LIBRARIES="%{buildroot}/%{_builddir}/ZMusic-%{zmusic_version}/build_install/lib/libzmusic.so"
+        -DCMAKE_PREFIX_PATH="%{_builddir}/ZMusic-%{zmusic_version}/build_install" \
+        -DZMUSIC_INCLUDE_DIR="%{_builddir}/ZMusic-%{zmusic_version}/build_install/include" \
+        -DZMUSIC_LIBRARIES="%{_builddir}/ZMusic-%{zmusic_version}/build_install/lib/libzmusic.so"
 
 make %{?_smp_mflags}
 
