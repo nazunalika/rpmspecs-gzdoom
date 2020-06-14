@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(libmpg123)
+BuildRequires:  pkgconfig(vulkan)
 
 # I'm adding opensuse support below
 # I'm checking to see if suse_version is defined, because
@@ -178,6 +179,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 - Fix waddir patch
 - Add ZMusic as part of build
 - Remove debug info packages
+- Add vulkan requirements
 
 * Mon Jan 20 2020 Louis Abel <tucklesepk@gmail.com> - 4.3.3-1
 - Update to 4.3.3
