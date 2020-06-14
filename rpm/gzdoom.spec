@@ -114,7 +114,7 @@ popd
 mkdir ../ZMusic-%{zmusic_version}/build
 pushd ../ZMusic-%{zmusic_version}/build
 %cmake  -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=%{_prefix}
+        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_INSTALL_LIBDIR=%{_libdir} ..
 
 #make %{?_smp_mflags}
