@@ -57,7 +57,7 @@ This package contains the development headers required for building against
 zmusic, typically for gzdoom installations.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{archive_name}-%{version}
 
 %build
 # Methodology used from zdoom forums
