@@ -2,7 +2,6 @@
 %global major_version 4
 %global minor_version 4
 %global micro_version 1
-%global zmusic_version 1.1.0
 %define debug_package %{nil}
 
 Name:           gzdoom
@@ -13,11 +12,11 @@ License:        GPLv3
 Url:            http://zdoom.org
 Source0:        https://github.com/coelckers/gzdoom/archive/g%{version}.tar.gz
 Source1:        gzdoom.desktop
-Source2:        https://github.com/coelckers/ZMusic/archive/%{zmusic_version}.tar.gz
+#Source2:        https://github.com/coelckers/ZMusic/archive/%{zmusic_version}.tar.gz
 
 Provides:       zdoom = 2.8.1
 Provides:       qzdoom = 1.3.0
-Provides:       zmusic = 1.1.0
+#Provides:       zmusic = 1.1.0
 #Provides:       bundled(lzma-sdk) = 17.01
 #Provides:       bundled(dumb) = 0.9.3
 #Provides:       bundled(gdtoa)
@@ -66,6 +65,9 @@ Requires:       openal-soft
 Requires:       fluidsynth
 Requires:       SDL2
 
+Requires:       zmusic
+BuildRequires:  zmusic-devel
+
 Recommends:     freedoom
 
 %description
@@ -104,24 +106,20 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         tools/updaterevision/updaterevision.c
 
 # Extract zmusic - Need to make this a setup tag
-pushd ..
-gzip -dc %{_sourcedir}/%{zmusic_version}.tar.gz | tar -xf -
-popd
+#pushd ..
+#gzip -dc %{_sourcedir}/%{zmusic_version}.tar.gz | tar -xf -
+#popd
 
 %build
-# We need zmusic first - and I don't understand why this goes to /usr/lib by
-# default
-mkdir ../ZMusic-%{zmusic_version}/build
-pushd ../ZMusic-%{zmusic_version}/build
-%cmake  -DCMAKE_BUILD_TYPE=Release \
-        ..
+#mkdir ../ZMusic-%{zmusic_version}/build
+#pushd ../ZMusic-%{zmusic_version}/build
+#%cmake  -DCMAKE_BUILD_TYPE=Release \
 #        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 #        -DCMAKE_INSTALL_LIBDIR=%{_lib} ..
 
 #make %{?_smp_mflags}
-%make_install
-
-popd
+#%make_install
+#popd
 
 %cmake  -DNO_STRIP=1 \
         -DCMAKE_SHARED_LINKER_FLAGS="" \
@@ -129,9 +127,9 @@ popd
         -DCMAKE_MODULE_LINKER_FLAGS="" \
         -DBUILD_SHARED_LIBS="OFF" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
-        -DINSTALL_PK3_PATH="%{_datadir}/doom" \
-        -DZMUSIC_INCLUDE_DIR="%{buildroot}%{_includedir}" \
-        -DZMUSIC_LIBRARIES="%{buildroot}%{_libdir}/libzmusic.so"
+        -DINSTALL_PK3_PATH="%{_datadir}/doom"
+        #-DZMUSIC_INCLUDE_DIR="%{buildroot}%{_includedir}" \
+        #-DZMUSIC_LIBRARIES="%{buildroot}%{_libdir}/libzmusic.so"
         #-DCMAKE_PREFIX_PATH="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install"
 
 make %{?_smp_mflags}
@@ -140,9 +138,9 @@ make %{?_smp_mflags}
 rm -rf $RPM_BUILD_ROOT
 
 # I'm sure there's a better way to handle this
-pushd ../ZMusic-%{zmusic_version}/build
-%make_install
-popd
+#pushd ../ZMusic-%{zmusic_version}/build
+#%make_install
+#popd
 
 # Install gzdoom
 %make_install
@@ -166,19 +164,18 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 
 %files
 %defattr(-, root, root, -)
-%doc docs/console.css docs/console.html docs/rh-log.txt docs/licenses/*
+%doc docs/console.css docs/console.html docs/rh-log.txt docs/licenses/* docs/skins.txt
 %{_bindir}/%{name}
 %{_datadir}/doom/*
 %{_docdir}/%{name}/*
 %{_datadir}/applications/gzdoom.desktop
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
-%{_libdir}/*
 
 %changelog
 * Sun Jun 07 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.1-1
 - Update to 4.4.1
+- Add ZMusic Requirement
 - Fix waddir patch
-- Add ZMusic as part of build
 - Remove debug info packages
 - Add vulkan requirements
 
