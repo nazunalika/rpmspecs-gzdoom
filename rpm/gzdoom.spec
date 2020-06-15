@@ -48,25 +48,18 @@ BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(vulkan)
 
-# I'm adding opensuse support below
-# I'm checking to see if suse_version is defined, because
-# I'm primarily targetting Fedora.
-%if 0%{?suse_version}
-BuildRequires:  timidity
-BuildRequires:  libjpeg-devel
-%else
 BuildRequires:  timidity++
 BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  wildmidi-devel
 Requires:       wildmidi
-%endif
 
 Requires:       openal-soft
 Requires:       fluidsynth
 Requires:       SDL2
 
-Requires:       zmusic
+# ZMusic Requirement
 BuildRequires:  zmusic-devel
+Requires:       zmusic
 
 Recommends:     freedoom
 
@@ -178,6 +171,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 - Fix waddir patch
 - Remove debug info packages
 - Add vulkan requirements
+- Remove openSUSE support as default repos contain it
 
 * Mon Jan 20 2020 Louis Abel <tucklesepk@gmail.com> - 4.3.3-1
 - Update to 4.3.3
