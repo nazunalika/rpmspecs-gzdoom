@@ -2,6 +2,7 @@
 %global major_version 1
 %global minor_version 1
 %global micro_version 0
+%global archive_name ZMusic
 
 Name:           zmusic
 Version:        %{major_version}.%{minor_version}.%{micro_version}
@@ -56,7 +57,7 @@ This package contains the development headers required for building against
 zmusic, typically for gzdoom installations.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{archive_name}-%{version}
 
 %build
 # Methodology used from zdoom forums
@@ -73,6 +74,8 @@ rm -rf $RPM_BUILD_ROOT
 
 cd build
 %make_install
+cd %{buildroot}/%{_prefix}
+mv lib %{_lib}
 
 %files
 %defattr(-, root, root, -)
