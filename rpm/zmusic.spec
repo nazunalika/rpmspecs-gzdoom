@@ -9,7 +9,7 @@ Release:        1%{?dist}
 Summary:        ZMusic libraries and headers for GZDoom functionality
 License:        GPLv3
 Url:            http://zdoom.org
-Source0:        https://github.com/coelckers/ZMusic/archive/%{zmusic_version}.tar.gz
+Source0:        https://github.com/coelckers/ZMusic/archive/%{version}.tar.gz
 
 Provides:       zmusic = 1.1.0
 

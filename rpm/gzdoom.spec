@@ -12,11 +12,9 @@ License:        GPLv3
 Url:            http://zdoom.org
 Source0:        https://github.com/coelckers/gzdoom/archive/g%{version}.tar.gz
 Source1:        gzdoom.desktop
-#Source2:        https://github.com/coelckers/ZMusic/archive/%{zmusic_version}.tar.gz
 
 Provides:       zdoom = 2.8.1
 Provides:       qzdoom = 1.3.0
-#Provides:       zmusic = 1.1.0
 #Provides:       bundled(lzma-sdk) = 17.01
 #Provides:       bundled(dumb) = 0.9.3
 #Provides:       bundled(gdtoa)
