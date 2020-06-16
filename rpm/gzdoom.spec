@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
 %global minor_version 4
-%global micro_version 1
+%global micro_version 2
 %define debug_package %{nil}
 
 Name:           gzdoom
@@ -149,7 +149,8 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
-* Tue Jun 16 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.1-2
+* Tue Jun 16 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-2
+- Rebase to 4.4.2
 - Add asmjit and spirv patches
 
 * Mon Jun 15 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.1-1
