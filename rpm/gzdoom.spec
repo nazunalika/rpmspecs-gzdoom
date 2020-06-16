@@ -15,12 +15,14 @@ Source1:        gzdoom.desktop
 
 Provides:       zdoom = 2.8.1
 Provides:       qzdoom = 1.3.0
+Provides:       bundled(re2c) = 0.16.0
+Provides:       bundled(gdtoa)
 #Provides:       bundled(lzma-sdk) = 17.01
 #Provides:       bundled(dumb) = 0.9.3
-#Provides:       bundled(gdtoa)
-#Provides:       bundled(re2c) = 0.16.0
 
 Patch1:         %{name}-waddir.patch
+Patch2:         %{name}-asmjit.patch
+Patch3:         %{name}-spirv.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -31,10 +33,14 @@ BuildRequires:  git
 BuildRequires:  nasm
 BuildRequires:  glew-devel
 
+# Todo: Patch
+#BuildRequires:  glslang-devel
+
 # pkgconfig
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -90,28 +96,13 @@ GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
 %setup -q -n %{name}-g%{version}
-%patch -P 1 -p1
+%patch -P 1 -P 2 -P 3 -p1
 
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
         tools/updaterevision/updaterevision.c
 
-# Extract zmusic - Need to make this a setup tag
-#pushd ..
-#gzip -dc %{_sourcedir}/%{zmusic_version}.tar.gz | tar -xf -
-#popd
-
 %build
-#mkdir ../ZMusic-%{zmusic_version}/build
-#pushd ../ZMusic-%{zmusic_version}/build
-#%cmake  -DCMAKE_BUILD_TYPE=Release \
-#        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-#        -DCMAKE_INSTALL_LIBDIR=%{_lib} ..
-
-#make %{?_smp_mflags}
-#%make_install
-#popd
-
 %cmake  -DNO_STRIP=1 \
         -DCMAKE_SHARED_LINKER_FLAGS="" \
         -DCMAKE_EXE_LINKER_FLAGS="" \
@@ -127,11 +118,6 @@ make %{?_smp_mflags}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-# I'm sure there's a better way to handle this
-#pushd ../ZMusic-%{zmusic_version}/build
-#%make_install
-#popd
 
 # Install gzdoom
 %make_install
@@ -163,7 +149,10 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
-* Sun Jun 07 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.1-1
+* Tue Jun 16 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.1-2
+- Add asmjit and spirv patches
+
+* Mon Jun 15 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.1-1
 - Update to 4.4.1
 - Add ZMusic Requirement
 - Fix waddir patch
