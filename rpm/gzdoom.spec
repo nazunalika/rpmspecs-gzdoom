@@ -6,7 +6,7 @@
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -149,6 +149,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
+* Sun Sep 27 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-3
+- Rebuild with zmusic 1.1.3
+
 * Tue Jun 16 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-2
 - Rebase to 4.4.2
 - Add asmjit and spirv patches
