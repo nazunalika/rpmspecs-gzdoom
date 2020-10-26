@@ -6,7 +6,7 @@
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -103,7 +103,8 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         tools/updaterevision/updaterevision.c
 
 %build
-%cmake  -DNO_STRIP=1 \
+%cmake  -B builddir \
+        -DNO_STRIP=1 \
         -DCMAKE_SHARED_LINKER_FLAGS="" \
         -DCMAKE_EXE_LINKER_FLAGS="" \
         -DCMAKE_MODULE_LINKER_FLAGS="" \
@@ -114,13 +115,13 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         #-DZMUSIC_LIBRARIES="%{buildroot}%{_libdir}/libzmusic.so"
         #-DCMAKE_PREFIX_PATH="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install"
 
-make %{?_smp_mflags}
+%make_build %{?_smp_mflags} -C builddir
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 # Install gzdoom
-%make_install
+%make_install -C builddir
 
 %{__mkdir} -p ${RPM_BUILD_ROOT}%{_datadir}/applications
 %{__install} -m 0644 %{SOURCE1} \
@@ -149,6 +150,10 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
+* Sun Oct 26 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-4
+- Build for Fedora 33
+- Adapt to Fedora macro changes for out-of-source builds
+
 * Sun Sep 27 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-3
 - Rebuild with zmusic 1.1.3
 
