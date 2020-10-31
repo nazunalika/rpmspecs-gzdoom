@@ -1,12 +1,12 @@
 # Global settings
 %global major_version 4
-%global minor_version 4
-%global micro_version 2
+%global minor_version 5
+%global micro_version 0
 %define debug_package %{nil}
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        4%{?dist}
+Release:        1%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -150,6 +150,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
+* Sat Oct 31 2020 Louis Abel <tucklesepk@gmail.com> - 4.5.0-1
+* Rebase to 4.5.0
+
 * Sun Oct 26 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-4
 - Build for Fedora 33
 - Adapt to Fedora macro changes for out-of-source builds
