@@ -22,7 +22,6 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
-Patch3:         %{name}-spirv.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -96,7 +95,7 @@ GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
 %setup -q -n %{name}-g%{version}
-%patch -P 1 -P 2 -P 3 -p1
+%patch -P 1 -P 2 -p1
 
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
@@ -151,7 +150,8 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 
 %changelog
 * Sat Oct 31 2020 Louis Abel <tucklesepk@gmail.com> - 4.5.0-1
-* Rebase to 4.5.0
+- Rebase to 4.5.0
+- Remove spirv static patch
 
 * Sun Oct 26 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-4
 - Build for Fedora 33
