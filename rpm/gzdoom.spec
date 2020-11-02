@@ -153,7 +153,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 - Rebase to 4.5.0
 - Remove spirv static patch
 
-* Sun Oct 26 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-4
+* Mon Oct 26 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-4
 - Build for Fedora 33
 - Adapt to Fedora macro changes for out-of-source builds
 
