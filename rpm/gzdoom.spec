@@ -22,6 +22,8 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
+# Temporary
+Patch3:         %{name}-zipdir.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -95,7 +97,7 @@ GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
 %setup -q -n %{name}-g%{version}
-%patch -P 1 -P 2 -p1
+%patch -P 1 -P 2 -P 3 -p1
 
 perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
@@ -114,7 +116,7 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         #-DZMUSIC_LIBRARIES="%{buildroot}%{_libdir}/libzmusic.so"
         #-DCMAKE_PREFIX_PATH="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install"
 
-%make_build %{?_smp_mflags} -C builddir
+%make_build -C builddir
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -149,9 +151,11 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
 %changelog
-* Sat Oct 31 2020 Louis Abel <tucklesepk@gmail.com> - 4.5.0-1
+* Wed Nov 04 2020 Louis Abel <tucklesepk@gmail.com> - 4.5.0-1
 - Rebase to 4.5.0
 - Remove spirv static patch
+- Cleanup unneeded macros
+- Added temporary zipdir patch to fix make build errors
 
 * Mon Oct 26 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-4
 - Build for Fedora 33

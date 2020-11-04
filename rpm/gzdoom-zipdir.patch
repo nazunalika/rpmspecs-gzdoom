@@ -1,0 +1,11 @@
+--- gzdoom-g4.5.0-orig/tools/zipdir/zipdir.c	2020-10-31 02:07:33.000000000 -0700
++++ gzdoom-g4.5.0/tools/zipdir/zipdir.c	2020-11-04 16:27:18.037426026 -0700
+@@ -781,6 +781,8 @@
+ 			if (central_dir == NULL)
+ 			{
+ 				fprintf(stderr, "Could not read central directory from %s. (Is it a zipfile?)\n", zipname);
++				fclose(ozip);
++				ozip = NULL;
+ 				update = 0;
+ 			}
+ 		}
