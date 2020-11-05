@@ -133,10 +133,18 @@ rm -rf $RPM_BUILD_ROOT
 cp %{_builddir}/%{name}-g%{version}/src/posix/zdoom.xpm \
   ${RPM_BUILD_ROOT}%{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 
-# Fallback soundfont
-%{__mkdir} ${RPM_BUILD_ROOT}%{_datadir}/doom/soundfonts
-cp %{_builddir}/%{name}-g%{version}/soundfont/gzdoom.sf2 \
-  ${RPM_BUILD_ROOT}%{_datadir}/doom/soundfonts/gzdoom.sf2
+# Fallback soundfont - Symlinking instead of copying
+# as a test for now. It's not clear if the binary will look here
+# or look in /usr/share/games/doom yet.
+pushd ${RPM_BUILD_ROOT}%{_datadir}/doom
+    %{__ln_s} %{_datadir}/games/doom/soundfounts soundfonts
+    %{__ln_s} %{_datadir}/games/doom/fm_banks fm_banks
+popd
+
+# Original logic
+#%{__mkdir} ${RPM_BUILD_ROOT}%{_datadir}/doom/soundfonts
+#cp %{_builddir}/%{name}-g%{version}/soundfont/gzdoom.sf2 \
+#  ${RPM_BUILD_ROOT}%{_datadir}/doom/soundfonts/gzdoom.sf2
 
 %post
 echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
@@ -149,6 +157,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_docdir}/%{name}/*
 %{_datadir}/applications/gzdoom.desktop
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
+%{_datadir}/games/doom/*
 
 %changelog
 * Wed Nov 04 2020 Louis Abel <tucklesepk@gmail.com> - 4.5.0-1
@@ -156,6 +165,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 - Remove spirv static patch
 - Cleanup unneeded macros
 - Added temporary zipdir patch to fix make build errors
+- Created symlinks for banks and soundfonts
 
 * Mon Oct 26 2020 Louis Abel <tucklesepk@gmail.com> - 4.4.2-4
 - Build for Fedora 33
