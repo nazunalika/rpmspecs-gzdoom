@@ -120,7 +120,6 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         #-DCMAKE_PREFIX_PATH="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install"
 
 #make_build -C builddir
-# Testing
 make %{?_smp_mflags} -C builddir
 
 %install
