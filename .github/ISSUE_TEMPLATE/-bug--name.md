@@ -17,5 +17,8 @@ If applicable, add more terminal data here.
  - Fedora:
  - Arch:
 
+**System Specs**
+Your system hardware information should be here
+
 **gzdoom configuration**
 Please provide the wads and pk3's you are using for gzdoom.

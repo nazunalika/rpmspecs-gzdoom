@@ -2,11 +2,11 @@
 %global major_version 4
 %global minor_version 5
 %global micro_version 0
-%define debug_package %{nil}
+#define debug_package %{nil}
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -104,6 +104,7 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         tools/updaterevision/updaterevision.c
 
 %build
+%define _lto_cflags %nil
 %cmake  -B builddir \
         -DNO_STRIP=1 \
         -DCMAKE_SHARED_LINKER_FLAGS="" \
@@ -112,11 +113,14 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         -DBUILD_SHARED_LIBS="OFF" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
         -DINSTALL_PK3_PATH="%{_datadir}/doom"
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo
         #-DZMUSIC_INCLUDE_DIR="%{buildroot}%{_includedir}" \
         #-DZMUSIC_LIBRARIES="%{buildroot}%{_libdir}/libzmusic.so"
         #-DCMAKE_PREFIX_PATH="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install"
 
-%make_build -C builddir
+#make_build -C builddir
+# Testing
+make %{?_smp_mflags} -C builddir
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -160,6 +164,10 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Fri Nov 06 2020 Louis Abel <tucklesepk@gmail.com> - 4.5.0-2
+- Turn on debuginfo packages
+- Adopt relinfo from flatpak
+
 * Wed Nov 04 2020 Louis Abel <tucklesepk@gmail.com> - 4.5.0-1
 - Rebase to 4.5.0
 - Remove spirv static patch
