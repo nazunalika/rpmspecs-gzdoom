@@ -2,7 +2,7 @@
 name: "[BUG] NAME"
 about: Create a report to stamp out gzdoom rpm bugs
 title: ''
-labels: ''
+labels: bug
 assignees: ''
 
 ---
