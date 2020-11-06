@@ -99,9 +99,10 @@ GZDoom provides an OpenGL renderer and HQnX rescaling.
 %setup -q -n %{name}-g%{version}
 %patch -P 1 -P 2 -P 3 -p1
 
-perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
+perl -i -pe 's{__DATE__}{""}g' \
+        src/common/platform/posix/sdl/i_main.cpp
 perl -i -pe 's{<unknown version>}{%version}g' \
-        tools/updaterevision/updaterevision.c
+        tools/updaterevision/UpdateRevision.cmake
 
 %build
 %define _lto_cflags %nil
@@ -167,6 +168,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 * Fri Nov 06 2020 Louis Abel <tucklesepk@gmail.com> - 4.5.0-2
 - Turn on debuginfo packages
 - Adopt relinfo from flatpak
+- Fixing perl replacements
 
 * Wed Nov 04 2020 Louis Abel <tucklesepk@gmail.com> - 4.5.0-1
 - Rebase to 4.5.0
