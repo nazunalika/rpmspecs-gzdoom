@@ -112,7 +112,7 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         -DCMAKE_MODULE_LINKER_FLAGS="" \
         -DBUILD_SHARED_LIBS="OFF" \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
-        -DINSTALL_PK3_PATH="%{_datadir}/doom"
+        -DINSTALL_PK3_PATH="%{_datadir}/doom" \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
         #-DZMUSIC_INCLUDE_DIR="%{buildroot}%{_includedir}" \
         #-DZMUSIC_LIBRARIES="%{buildroot}%{_libdir}/libzmusic.so"
