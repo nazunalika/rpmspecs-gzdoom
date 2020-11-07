@@ -115,9 +115,6 @@ perl -i -pe 's{<unknown version>}{%version}g' \
         -DINSTALL_DOCS_PATH="%{_docdir}/%{name}" \
         -DINSTALL_PK3_PATH="%{_datadir}/doom" \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
-        #-DZMUSIC_INCLUDE_DIR="%{buildroot}%{_includedir}" \
-        #-DZMUSIC_LIBRARIES="%{buildroot}%{_libdir}/libzmusic.so"
-        #-DCMAKE_PREFIX_PATH="%{buildroot}%{_builddir}/ZMusic-%{zmusic_version}/build_install"
 
 #make_build -C builddir
 make %{?_smp_mflags} -C builddir
@@ -144,11 +141,6 @@ pushd ${RPM_BUILD_ROOT}%{_datadir}/doom
     %{__ln_s} %{_datadir}/games/doom/soundfounts soundfonts
     %{__ln_s} %{_datadir}/games/doom/fm_banks fm_banks
 popd
-
-# Original logic
-#%{__mkdir} ${RPM_BUILD_ROOT}%{_datadir}/doom/soundfonts
-#cp %{_builddir}/%{name}-g%{version}/soundfont/gzdoom.sf2 \
-#  ${RPM_BUILD_ROOT}%{_datadir}/doom/soundfonts/gzdoom.sf2
 
 %post
 echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
