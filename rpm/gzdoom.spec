@@ -6,7 +6,7 @@
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -52,8 +52,8 @@ BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(vulkan)
 
 BuildRequires:  timidity++
-BuildRequires:  libjpeg-turbo-devel
-BuildRequires:  wildmidi-devel
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(wildmidi)
 Requires:       wildmidi
 
 Requires:       openal-soft
@@ -154,6 +154,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Tue May 25 2021 Louis Abel <tucklesepk@gmail.com> - 4.6.0-2
+- Rebuild against zmusic 1.1.8
+
 * Sat May 22 2021 Louis Abel <tucklesepk@gmail.com> - 4.6.0-1
 - Rebase to 4.6.0
 
