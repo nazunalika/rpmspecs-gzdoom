@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
 %global minor_version 6
-%global micro_version 0
+%global micro_version 1
 #define debug_package %{nil}
 
 Name:           gzdoom
@@ -154,6 +154,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Sun Jul 25 2021 Louis Abel <tucklesepk@gmail.com> - 4.6.1-2
+- Updates to 4.6.1
+
 * Tue May 25 2021 Louis Abel <tucklesepk@gmail.com> - 4.6.0-2
 - Rebuild against zmusic 1.1.8
 
