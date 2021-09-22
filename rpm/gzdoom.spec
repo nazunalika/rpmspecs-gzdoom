@@ -155,7 +155,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 
 %changelog
 * Wed Sep 22 2021 Louis Abel <tucklesepk@gmail.com> - 4.7.0-1
-- Update to 4.6.1
+- Update to 4.7.0
 
 * Sun Jul 25 2021 Louis Abel <tucklesepk@gmail.com> - 4.6.1-2
 - Updates to 4.6.1
