@@ -6,7 +6,7 @@
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -170,6 +170,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_includedir}/discord_rpc.h
 
 %changelog
+* Mon Jun 06 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.0-2
+- Rebuild against zmusic 1.1.9
+
 * Mon Jun 06 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.0-1
 - Update to 4.8.0
 
