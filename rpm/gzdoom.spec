@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(vpx)
 
 BuildRequires:  timidity++
 BuildRequires:  pkgconfig(libjpeg)
