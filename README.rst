@@ -27,9 +27,9 @@ If you're starting out rpm packaging, please consider reading the following docu
 
 `FHS <http://www.pathname.com/fhs/>`_
 
-`Fedora: Fedora Packaging Guidelines <https://fedoraproject.org/wiki/Packaging:Guidelines>`_
+`Fedora: Fedora Packaging Guidelines <https://docs.fedoraproject.org/en-US/packaging-guidelines/>`_
 
-`Fedora: How to create an RPM package <https://fedoraproject.org/wiki/How_to_create_an_RPM_package>`_
+`Fedora: Creating RPM Packages <https://docs.fedoraproject.org/en-US/package-maintainers/Packaging_Tutorial_GNU_Hello/>`_
 
 What you should get from the above is there are specific guidelines that should be followed, for maintainability, portability, and easy review. My RPM specs will have an FAQ of the "purpose". 
 
