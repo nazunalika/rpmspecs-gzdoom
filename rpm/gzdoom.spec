@@ -22,6 +22,7 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
+Patch3:         %{name}-fix-file-path.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -172,6 +173,7 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %changelog
 * Mon Jun 06 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.0-2
 - Rebuild against zmusic 1.1.9
+- Fix file path for gzdoom.pk3 missing
 
 * Mon Jun 06 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.0-1
 - Update to 4.8.0
