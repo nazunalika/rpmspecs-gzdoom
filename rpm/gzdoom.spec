@@ -94,6 +94,15 @@ ZDoom features the following that is not found in the original Doom:
 
 GZDoom provides an OpenGL renderer and HQnX rescaling.
 
+%package     -n devel
+Summary:        gzdoom development headers
+License:        GPLv3
+Provides:       gzdoom-devel = %{version}
+Requires:       gzdoom = %{version}
+
+%description -n devel
+%{name} development headers and other goodies
+
 %prep
 %setup -q -n %{name}-g%{version}
 %patch -P 1 -P 2 -p1
@@ -153,6 +162,12 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/applications/gzdoom.desktop
 %{_datadir}/icons/hicolor/256x256/apps/gzdoom.xpm
 %{_datadir}/games/doom/*
+%{_libdir}/libdiscord-rpc.a
+
+%files -n devel
+%defattr(-, root, root, -)
+%{_includedir}/discord_register.h
+%{_includedir}/discord_rpc.h
 
 %changelog
 * Mon Jun 06 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.0-1
