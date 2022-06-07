@@ -6,7 +6,7 @@
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -22,7 +22,7 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
-Patch3:         %{name}-fix-file-path.patch
+Patch3:         %{name}-revert-commit.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -106,7 +106,7 @@ Requires:       gzdoom = %{version}
 
 %prep
 %setup -q -n %{name}-g%{version}
-%patch -P 1 -P 2 -p1
+%patch -P 1 -P 2 -P 3 -p1
 
 perl -i -pe 's{__DATE__}{""}g' \
         src/common/platform/posix/sdl/i_main.cpp
@@ -171,9 +171,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_includedir}/discord_rpc.h
 
 %changelog
-* Mon Jun 06 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.0-2
+* Mon Jun 06 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.0-3
 - Rebuild against zmusic 1.1.9
-- Fix file path for gzdoom.pk3 missing
+- Revert a commit from May 1st
 
 * Mon Jun 06 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.0-1
 - Update to 4.8.0
