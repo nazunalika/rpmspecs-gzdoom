@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
 %global minor_version 8
-%global micro_version 0
+%global micro_version 1
 #define debug_package %{nil}
 
 Name:           gzdoom
@@ -171,6 +171,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_includedir}/discord_rpc.h
 
 %changelog
+* Sun Jun 26 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.1-3
+- Update to 4.8.1
+
 * Mon Jun 06 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.0-3
 - Rebuild against zmusic 1.1.9
 - Revert a commit from May 1st
