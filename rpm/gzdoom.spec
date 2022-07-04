@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
 %global minor_version 8
-%global micro_version 1
+%global micro_version 2
 #define debug_package %{nil}
 
 Name:           gzdoom
@@ -156,6 +156,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Mon Jul 04 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.2-3
+- Update to 4.8.2
+
 * Sun Jun 26 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.1-3
 - Update to 4.8.1
 
