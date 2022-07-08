@@ -6,7 +6,7 @@
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -23,6 +23,7 @@ Provides:       bundled(gdtoa)
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
 Patch3:         %{name}-revert-commit.patch
+Patch4:         0001-Turn-on-32-bit-builds-for-armhfp.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -156,6 +157,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Mon Jul 04 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.2-4
+- Turn on 32 bit builds for armhfp
+
 * Mon Jul 04 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.2-3
 - Update to 4.8.2
 
