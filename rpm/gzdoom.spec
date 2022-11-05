@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
-%global minor_version 8
-%global micro_version 2
+%global minor_version 9
+%global micro_version 0
 #define debug_package %{nil}
 
 Name:           gzdoom
@@ -22,8 +22,8 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
-Patch3:         %{name}-revert-commit.patch
-Patch4:         0001-Turn-on-32-bit-builds-for-armhfp.patch
+#Patch3:         %{name}-revert-commit.patch
+#Patch4:         0001-Turn-on-32-bit-builds-for-armhfp.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -157,6 +157,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Sat Nov 05 2022 Louis Abel <tucklesepk@gmail.com> - 4.9.0-1
+- Update to 4.9.0
+
 * Mon Jul 04 2022 Louis Abel <tucklesepk@gmail.com> - 4.8.2-4
 - Turn on 32 bit builds for armhfp
 
