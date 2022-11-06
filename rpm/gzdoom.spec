@@ -22,7 +22,7 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
-#Patch3:         %{name}-revert-commit.patch
+Patch3:         %{name}-unbreak-compiling.patch
 #Patch4:         0001-Turn-on-32-bit-builds-for-armhfp.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -98,7 +98,7 @@ GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
 %setup -q -n %{name}-g%{version}
-%patch -P 1 -P 2 -p1
+%patch -P 1 -P 2 -P 3 -p1
 
 perl -i -pe 's{__DATE__}{""}g' \
         src/common/platform/posix/sdl/i_main.cpp

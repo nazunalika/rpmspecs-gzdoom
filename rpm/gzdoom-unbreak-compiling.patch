@@ -1,0 +1,36 @@
+From 66367f54608bc590117acb20ff347e9501ee76e5 Mon Sep 17 00:00:00 2001
+From: nazunalika <tucklesepk@gmail.com>
+Date: Sat, 5 Nov 2022 17:26:00 -0700
+Subject: [PATCH] fix compiling on linux
+
+---
+ src/d_anonstats.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/d_anonstats.cpp b/src/d_anonstats.cpp
+index 1dcd058..3b49ba6 100644
+--- a/src/d_anonstats.cpp
++++ b/src/d_anonstats.cpp
+@@ -11,9 +11,9 @@ void D_ConfirmSendStats()
+ 
+ #else // !NO_SEND_STATS
+ 
+-#include "i_mainwindow.h"
+ 
+ #if defined(_WIN32)
++#include "i_mainwindow.h"
+ #define WIN32_LEAN_AND_MEAN
+ #include <windows.h>
+ #include <winsock2.h>
+@@ -121,7 +121,7 @@ bool I_HTTPRequest(const char* request)
+ bool I_HTTPRequest(const char* request)
+ {
+ 	if ((*sys_statshost)[0] == 0)
+-		actor->		return false; // no host, disable
++		return false; // no host, disable
+ 
+ 	int sockfd, portno, n;
+ 		struct sockaddr_in serv_addr;
+-- 
+2.31.1
+
