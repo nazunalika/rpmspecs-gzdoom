@@ -1,6 +1,6 @@
 # Global settings
 %global major_version 4
-%global minor_version 9
+%global minor_version 10
 %global micro_version 0
 #define debug_package %{nil}
 
@@ -22,7 +22,7 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
-Patch3:         %{name}-unbreak-compiling.patch
+#Patch3:         %{name}-unbreak-compiling.patch
 #Patch4:         0001-Turn-on-32-bit-builds-for-armhfp.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -157,6 +157,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Sun Dec 04 2022 Louis Abel <tucklesepk@gmail.com> - 4.10.0-1
+- Update to 4.9.0
+
 * Sat Nov 05 2022 Louis Abel <tucklesepk@gmail.com> - 4.9.0-1
 - Update to 4.9.0
 
