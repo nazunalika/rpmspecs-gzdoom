@@ -1,12 +1,12 @@
 # Global settings
 %global major_version 4
-%global minor_version 10
+%global minor_version 11
 %global micro_version 0
 #define debug_package %{nil}
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        6%{?dist}
+Release:        1%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -157,6 +157,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Mon Sep 25 2023 Louis Abel <tucklesepk@gmail.com> - 4.11.0-1
+- Update to 4.11.0
+
 * Thu Sep 21 2023 Louis Abel <tucklesepk@gmail.com> - 4.10.0-6
 - Rebuild version 4.9.0
 
