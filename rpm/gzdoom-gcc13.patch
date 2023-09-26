@@ -1,13 +1,12 @@
-diff --git gzdoom-g4.10.0-old/src/common/rendering/vulkan/thirdparty/vk_mem_alloc/vk_mem_alloc.h gzdoom-g4.10.0/src/common/rendering/vulkan/thirdparty/vk_mem_alloc/vk_mem_alloc.h
-index fd44722..db0b94f 100644
---- gzdoom-g4.10.0-old/src/common/rendering/vulkan/thirdparty/vk_mem_alloc/vk_mem_alloc.h
-+++ gzdoom-g4.10.0/src/common/rendering/vulkan/thirdparty/vk_mem_alloc/vk_mem_alloc.h
-@@ -104,6 +104,8 @@ Documentation of all members: vk_mem_alloc.h
- - [Source repository on GitHub](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator)
+diff --git a/libraries/ZVulkan/include/zvulkan/vk_mem_alloc/vk_mem_alloc.h b/libraries/ZVulkan/include/zvulkan/vk_mem_alloc/vk_mem_alloc.h
+index 39f9d9d..96ce551 100644
+--- a/libraries/ZVulkan/include/zvulkan/vk_mem_alloc/vk_mem_alloc.h
++++ b/libraries/ZVulkan/include/zvulkan/vk_mem_alloc/vk_mem_alloc.h
+@@ -121,6 +121,7 @@ for user-defined purpose without allocating any real GPU memory.
+ See documentation chapter: \ref statistics.
  */
  
 +#include <stdio.h>
-+
+ 
  #ifdef __cplusplus
- extern "C" {
- #endif
+ #include <cstdio>

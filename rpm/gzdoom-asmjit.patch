@@ -1,6 +1,8 @@
---- gzdoom-g4.4.1-orig/libraries/asmjit/CMakeLists.txt	2020-06-10 06:24:21.000000000 -0700
-+++ gzdoom-g4.4.1/libraries/asmjit/CMakeLists.txt	2020-06-16 08:54:26.853885875 -0700
-@@ -100,6 +100,7 @@
+diff --git a/libraries/asmjit/CMakeLists.txt b/libraries/asmjit/CMakeLists.txt
+index 4167e4c..82370f9 100644
+--- a/libraries/asmjit/CMakeLists.txt
++++ b/libraries/asmjit/CMakeLists.txt
+@@ -98,6 +98,7 @@ set(ASMJIT_SRCS
  add_library(${ASMJITNAME} STATIC ${ASMJIT_SRCS} ${ASMJIT_PUBLIC_HDRS})
  
  set_target_properties(${ASMJITNAME} PROPERTIES OUTPUT_NAME asmjit)
