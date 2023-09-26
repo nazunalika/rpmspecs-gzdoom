@@ -33,6 +33,7 @@ BuildRequires:  tar
 BuildRequires:  git
 BuildRequires:  nasm
 BuildRequires:  glew-devel
+BuildRequires:  pkgconfig(libwebp)
 
 # Todo: Patch
 #BuildRequires:  glslang-devel
