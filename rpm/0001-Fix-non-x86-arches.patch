@@ -1,0 +1,25 @@
+From 21a536b6ccb2b3e814825f303143545c2ea722c9 Mon Sep 17 00:00:00 2001
+From: Louis Abel <tucklesepk@gmail.com>
+Date: Mon, 9 Oct 2023 18:32:46 -0700
+Subject: [PATCH] Fix non-x86 arches
+
+---
+ src/common/utility/x86.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/common/utility/x86.cpp b/src/common/utility/x86.cpp
+index 78d74fff9..5707c6572 100644
+--- a/src/common/utility/x86.cpp
++++ b/src/common/utility/x86.cpp
+@@ -45,7 +45,7 @@ void CheckCPUID(CPUInfo *cpu)
+ 	cpu->DataL1LineSize = 32;	// Assume a 32-byte cache line
+ }
+ 
+-FString DumpCPUInfo(const CPUInfo *cpu)
++FString DumpCPUInfo(const CPUInfo *cpu, bool brief)
+ {
+ 	return FString();
+ }
+-- 
+2.41.0
+

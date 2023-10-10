@@ -6,7 +6,7 @@
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -22,8 +22,8 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
-Patch3:         %{name}-gcc13.patch
-#Patch4:         0001-Turn-on-32-bit-builds-for-armhfp.patch
+Patch3:         %{name}-fix-arm.patch
+Patch4:         0001-Fix-non-x86-arches.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -158,6 +158,12 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Mon Oct 09 2023 Louis Abel <tucklesepk@gmail.com> - 4.11.0-3
+- Actually fix non-x86 builds
+
+* Mon Sep 25 2023 Louis Abel <tucklesepk@gmail.com> - 4.11.0-2
+- Fix non-x86 builds
+
 * Mon Sep 25 2023 Louis Abel <tucklesepk@gmail.com> - 4.11.0-1
 - Update to 4.11.0
 
