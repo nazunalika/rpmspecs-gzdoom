@@ -22,8 +22,7 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
-Patch3:         %{name}-fix-arm.patch
-Patch4:         0001-Fix-non-x86-arches.patch
+Patch3:         0001-Fix-non-x86-arches.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
