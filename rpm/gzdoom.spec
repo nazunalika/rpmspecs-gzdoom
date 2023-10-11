@@ -1,12 +1,12 @@
 # Global settings
 %global major_version 4
 %global minor_version 11
-%global micro_version 0
+%global micro_version 1
 #define debug_package %{nil}
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        3%{?dist}
+Release:        1%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -22,7 +22,6 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
-Patch3:         0001-Fix-non-x86-arches.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -98,7 +97,7 @@ GZDoom provides an OpenGL renderer and HQnX rescaling.
 
 %prep
 %setup -q -n %{name}-g%{version}
-%patch -P 1 -P 2 -P 3 -p1
+%patch -P 1 -P 2 -p1
 
 perl -i -pe 's{__DATE__}{""}g' \
         src/common/platform/posix/sdl/i_main.cpp
@@ -157,6 +156,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Wed Oct 11 2023 Louis Abel <tucklesepk@gmail.com> - 4.11.1-1
+- Update to 4.11.1
+
 * Mon Oct 09 2023 Louis Abel <tucklesepk@gmail.com> - 4.11.0-3
 - Actually fix non-x86 builds
 
