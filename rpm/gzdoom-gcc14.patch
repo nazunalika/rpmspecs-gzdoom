@@ -1,0 +1,12 @@
+diff --git a/libraries/ZWidget/include/zwidget/widgets/lineedit/lineedit.h b/libraries/ZWidget/include/zwidget/widgets/lineedit/lineedit.h
+index 526d9ee..ac1dff7 100644
+--- a/libraries/ZWidget/include/zwidget/widgets/lineedit/lineedit.h
++++ b/libraries/ZWidget/include/zwidget/widgets/lineedit/lineedit.h
+@@ -4,6 +4,7 @@
+ #include "../../core/widget.h"
+ #include "../../core/timer.h"
+ #include <functional>
++#include <cstring>
+ 
+ class LineEdit : public Widget
+ {
