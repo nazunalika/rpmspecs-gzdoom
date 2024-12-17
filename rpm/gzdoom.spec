@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
-%global minor_version 13
-%global micro_version 2
+%global minor_version 14
+%global micro_version 0
 #define debug_package %{nil}
 
 Name:           gzdoom
@@ -156,6 +156,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Tue Dec 17 2024 Louis Abel <tucklesepk@gmail.com> - 4.14.0-1
+- Rebase to 4.14.0
+
 * Thu Oct 31 2024 Louis Abel <tucklesepk@gmail.com> - 4.13.2-1
 - Rebase to 4.13.2
 
