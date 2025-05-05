@@ -1,7 +1,7 @@
 # Global settings
 %global major_version 4
 %global minor_version 14
-%global micro_version 1
+%global micro_version 2
 #define debug_package %{nil}
 
 Name:           gzdoom
@@ -22,7 +22,6 @@ Provides:       bundled(gdtoa)
 
 Patch1:         %{name}-waddir.patch
 Patch2:         %{name}-asmjit.patch
-Patch3:         %{name}-fix-gcc15.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
@@ -160,6 +159,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Sun May 04 2025 Louis Abel <tucklesepk@gmail.com> - 4.14.2-1
+- Rebase to 4.14.2
+
 * Sat Mar 01 2025 Louis Abel <tucklesepk@gmail.com> - 4.14.1-1
 - Rebase to 4.14.1
 
