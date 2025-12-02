@@ -6,7 +6,7 @@
 
 Name:           gzdoom
 Version:        %{major_version}.%{minor_version}.%{micro_version}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An OpenGL DOOM source port with graphic and modding extensions
 License:        GPLv3
 Url:            http://zdoom.org
@@ -146,7 +146,7 @@ pushd ${RPM_BUILD_ROOT}%{_datadir}/doom
 popd
 
 %post
-echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
+echo "INFO: %{name}: Please use uzdoom. This will be the final release."
 
 %files
 %defattr(-, root, root, -)
@@ -159,6 +159,9 @@ echo "INFO: %{name}: The global IWAD directory is %{_datadir}/doom."
 %{_datadir}/games/doom/*
 
 %changelog
+* Tue Dec 02 2025 Louis Abel <tucklesepk@gmail.com> - 4.14.2-2
+- Upgrade notice: Please use uzdoom
+
 * Sun May 04 2025 Louis Abel <tucklesepk@gmail.com> - 4.14.2-1
 - Rebase to 4.14.2
 
